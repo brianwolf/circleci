@@ -1,10 +1,10 @@
-# JSON_REPORTES
+# CIRCLECI
 
-Servicio para parsear data en json a un template customizable para generar reportes, por ahora solo genera pdfs
+Ejemplo de arquitectura de un proyecto usando **python**, **circleci** y **docker**
 
 ![alt text](img/python.png)
-![alt text](img/gunicorn.png)
 ![alt text](img/circleci.png)
+![alt text](img/docker.png)
 
 ## REQUERIMIENTOS
 
