@@ -18,6 +18,7 @@ class ErrorApp(Exception):
     mensaje: contiene informacion extra en formato texto para una mayor informacion, esto es mas para quien use la api,
     un ejemplo puede ser: 'el usuario ya existe en la base de datos'
     '''
+
     def __init__(self, codigo, mensaje):
         self.codigo = codigo
         self.mensaje = mensaje

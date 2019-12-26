@@ -4,9 +4,7 @@ ARG TAG=v1
 
 # CONFIGURACION
 WORKDIR /usr/src/
-
 COPY ./src/ .
-COPY ./src/wkhtmltopdf/wkhtmltopdf /usr/bin/
 
 
 # DEPENDENCIAS

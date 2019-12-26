@@ -1,5 +1,2 @@
 flask
 gunicorn
-pymongo
-mongoengine
-Jinja2
