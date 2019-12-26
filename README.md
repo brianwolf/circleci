@@ -4,7 +4,7 @@ Ejemplo de arquitectura de un proyecto usando **python**, **circleci** y **docke
 
 ![alt text](img/python.png)
 ![alt text](img/circleci.png)
-![alt text](img/docker.png)
+![alt text](img/docker.svg)
 
 ## REQUERIMIENTOS
 
