@@ -1,0 +1,4 @@
+export GIT_USER=brianwolf
+export GIT_TOKEN=fe83dacd766e0a087ef6ddd426b665c8a5ea3274
+export GIT_REPO=ProyectoLobezZzno
+export GIT_CARPETA_DESCARGA=./scripts/actualizar-config/config_desde_git
