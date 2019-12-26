@@ -24,7 +24,7 @@ def handle_exception(e):
 
 
 @app.errorhandler(ErrorApp)
-def handle_exception(ae):
+def handle_business_exception(ae):
     return ae.respuesta_json()
 
 

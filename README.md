@@ -8,7 +8,8 @@ Servicio para parsear data en json a un template customizable para generar repor
 
 ## REQUERIMIENTOS
 
-* **Mongodb**
+* **Python 3.7**
+* **Docker**
 
 ## EJECUCION
 
