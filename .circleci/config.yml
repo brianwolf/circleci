@@ -34,7 +34,6 @@ jobs:
   descargar_configuracion:
     machine:
       enabled: true
-    working_directory: ~/src
     steps:
       - checkout
       - run:
@@ -45,7 +44,6 @@ jobs:
   creacion_de_docker:
     machine:
       enabled: true
-    working_directory: ~/src
     environment:
       NUMERO_DESPLIEGUE: << pipeline.number >>
     steps:
@@ -61,7 +59,6 @@ jobs:
   despliegue_a_heroku:
     machine:
         enabled: true
-    working_directory: ~/src
     environment:
       NUMERO_DESPLIEGUE: << pipeline.number >>
     steps:
