@@ -7,7 +7,7 @@ from app.configs.loggers import get_logger
 HTTP_STATUS_ERROR_NEGOCIO = 409
 
 
-class ErrorApp(Exception):
+class AppException(Exception):
     '''
     Clase de error basico para manejar errores de negocio o errores dentro de la aplicacion
     que son esperados sus atributos son:

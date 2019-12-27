@@ -2,7 +2,7 @@ from uuid import UUID
 
 import app.configs.variables as var
 from app.configs.loggers import get_logger
-from app.models.errores import ErrorApp
+from app.models.errores import AppException
 from app.models.modelos import Modelo
 
 
