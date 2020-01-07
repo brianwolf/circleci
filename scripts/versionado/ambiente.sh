@@ -1,3 +1,3 @@
 export GIT_USER=brianwolf
-export GIT_TOKEN=2e52f82b875bec56e4de032da918abe9311ac6a7
+export GIT_TOKEN=c861b168d0e8a60df6098f4ea393d7f542d98075
 export GIT_REPO=circleci

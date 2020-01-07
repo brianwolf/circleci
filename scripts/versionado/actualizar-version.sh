@@ -30,8 +30,12 @@ IFS='v' read -r -a array <<< "$(git tag | sort -V | tail -1)"
 ULTIMA_VERSION_INT=${array[1]:-0}
 VERSION_FINAL="v$((ULTIMA_VERSION_INT + 1))"
 
+git remote add origin https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git
 git tag $VERSION_FINAL
-git push https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git --tags
+git push -u origin master --tags
+
+# git tag $VERSION_FINAL
+# git push https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git --tags
 
 cd ../../../
 
