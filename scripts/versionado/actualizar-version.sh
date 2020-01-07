@@ -1,12 +1,16 @@
 source ./scripts/versionado/ambiente.sh
 
-# a=2
+
+# OBTENER TAGS
+IFS='v' read -r -a array <<< "$(git tag | sort -V | tail -1)"
 
 
-# echo "$(($a + 1))"
+# GENERAR SIGUIENTE TAG
+ULTIMA_VERSION_INT=${array[1]:-0}
+VERSION_FINAL="v$((ULTIMA_VERSION_INT + 1))"
 
-echo $(git tag)
+echo "Version a desplegar: $VERSION_FINAL"
 
-IFS='v' read -r -a array <<< "$(git tag)"
-
-echo ${array[2]}
+# SUBIR TAG
+git tag $VERSION_FINAL
+git push https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git --tags
