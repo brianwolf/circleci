@@ -13,7 +13,7 @@ echo "Version a desplegar: $VERSION_FINAL"
 
 # SUBIR TAG
 git tag $VERSION_FINAL
-git push --tags
+git push https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git --tags
 
 
 # GUARDO CONFIGURACION PARA LOS DEMAS JOBS
