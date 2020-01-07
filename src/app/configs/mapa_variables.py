@@ -4,7 +4,7 @@ mapa_variables = {
     'PYTHON_PORT': 5000,
 
     'NIVEL_LOGS': 'INFO',
-    'RUTA_LOGS': 'logs',
+    'DIRECTORIO_LOGS': 'logs/',
     'NOMBRE_LOG_PREDEFINIDO': 'app',
     'NOMBRE_LOG_REST': 'rest'
 }

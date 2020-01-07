@@ -3,7 +3,7 @@ import app.configs.variables as var
 import logging
 import os
 
-RUTA_LOGS = var.get('RUTA_LOGS')
+DIRECTORIO_LOGS = var.get('DIRECTORIO_LOGS')
 NOMBRE_LOG_PREDEFINIDO = var.get('NOMBRE_LOG_PREDEFINIDO')
 NIVEL_LOGS = var.get('NIVEL_LOGS')
 
@@ -17,8 +17,8 @@ def get_logger(nombre=NOMBRE_LOG_PREDEFINIDO) -> logging.Logger:
     if nombre in loggers.keys():
         return loggers[nombre]
 
-    if not os.path.exists(RUTA_LOGS):
-        os.makedirs(RUTA_LOGS, exist_ok=True)
+    if not os.path.exists(DIRECTORIO_LOGS):
+        os.makedirs(DIRECTORIO_LOGS, exist_ok=True)
 
     logger = logging.getLogger(nombre)
     logger.setLevel(NIVEL_LOGS)
@@ -30,7 +30,7 @@ def get_logger(nombre=NOMBRE_LOG_PREDEFINIDO) -> logging.Logger:
     sh.setLevel(NIVEL_LOGS)
     sh.setFormatter(formatter)
 
-    fh = logging.FileHandler(RUTA_LOGS + f"/{nombre}.log")
+    fh = logging.FileHandler(DIRECTORIO_LOGS + f"{nombre}.log")
     fh.setLevel(NIVEL_LOGS)
     fh.setFormatter(formatter)
     logger.addHandler(sh)
