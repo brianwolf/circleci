@@ -1,18 +1,19 @@
 version: 2.1
 
-
 ##################################################################
 # WORFLOWS
 ##################################################################
 workflows:
-
   despliegue_a_master:
     jobs:
-      # - descargar_configuracion:
-      #     filters:
-      #       branches:
-      #         only: master
+      - nueva_version:
+          filters:
+            branches:
+              only: master
+
       - creacion_de_docker:
+          requires:
+            - nueva_version
           filters:
             branches:
               only: master
@@ -24,29 +25,46 @@ workflows:
             branches:
               only: master
 
-
+##################################################################
+# EXECUTORS
+##################################################################
+executors:
+  ejecutor-base:
+    machine:
+      enabled: true
+    working_directory: ~/proyect
+    environment:
+      NUMERO_DESPLIEGUE: << pipeline.number >>
 
 ##################################################################
 # JOBS
 ##################################################################
 jobs:
+  nueva_version:
+    executor: ejecutor-base
+    steps:
+      - attach_workspace:
+          at: ~/proyect
+      - checkout
+      - run:
+          name: generar_nueva_version
+          command: ./scripts/versionado/actualizar-version.sh
 
   descargar_configuracion:
-    machine:
-      enabled: true
+    executor: ejecutor-base
     steps:
+      - attach_workspace:
+          at: ~/proyect
       - checkout
       - run:
           name: reemplazar-config
           command: ./scripts/actualizar-config/reemplazar-config.sh
 
-
   creacion_de_docker:
-    machine:
-      enabled: true
-    environment:
-      NUMERO_DESPLIEGUE: << pipeline.number >>
+    executor: ejecutor-base
     steps:
+      - attach_workspace:
+          at: ~/proyect
       - checkout
       - run:
           name: build
@@ -55,13 +73,11 @@ jobs:
           name: push
           command: ./scripts/docker/push.sh
 
-          
   despliegue_a_heroku:
-    machine:
-        enabled: true
-    environment:
-      NUMERO_DESPLIEGUE: << pipeline.number >>
+    executor: ejecutor-base
     steps:
+      - attach_workspace:
+          at: ~/proyect
       - checkout
       - run:
           name: instalar-heroku
@@ -72,4 +88,3 @@ jobs:
       - run:
           name: despliegue
           command: ./scripts/heroku/despliegue.sh
-          
