@@ -7,8 +7,6 @@ workflows:
   despliegue_a_master:
     jobs:
       - creacion_de_docker:
-          requires:
-            - nueva_version
           filters:
             branches:
               only: master
