@@ -1,4 +1,4 @@
-source ./scripts/actualizar-config/ambiente.sh
+source ./scripts/ambiente/ambiente.sh
 
 
 # SE BORRA LA CARPETA EN CASO DE QUE YA EXISTA

@@ -6,11 +6,6 @@ version: 2.1
 workflows:
   despliegue_a_master:
     jobs:
-      - nueva_version:
-          filters:
-            branches:
-              only: master
-
       - creacion_de_docker:
           requires:
             - nueva_version
@@ -34,7 +29,7 @@ executors:
       enabled: true
     working_directory: ~/proyect
     environment:
-      NUMERO_DESPLIEGUE: << pipeline.number >>
+      TAG_DESPLIEGUE: $CIRCLE_SHA1
 
 ##################################################################
 # JOBS
@@ -58,7 +53,7 @@ jobs:
       - checkout
       - run:
           name: reemplazar-config
-          command: ./scripts/actualizar-config/reemplazar-config.sh
+          command: ./scripts/ambiente/reemplazar-config.sh
 
   creacion_de_docker:
     executor: ejecutor-base
