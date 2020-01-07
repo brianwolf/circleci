@@ -13,8 +13,7 @@ echo "Version a desplegar: $VERSION_FINAL"
 
 # SUBIR TAG
 git tag $VERSION_FINAL
-curl -u $GIT_USER:$GIT_TOKEN https://api.github.com/user
-git push ${CIRCLE_REPOSITORY_URL:-"https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git"} --tags
+git push --tags
 
 
 # GUARDO CONFIGURACION PARA LOS DEMAS JOBS
