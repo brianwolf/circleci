@@ -7,7 +7,8 @@ export DOCKER_USER=brianwolf94
 export DOCKER_TOKEN=64f0e37f-eb5a-4072-8b5b-a1a2b7e7b7cf
 
 export DOCKER_NOMBRE_IMAGEN=circleci
-export DOCKER_TAG=v${NUMERO_DESPLIEGUE:-1}
+# export DOCKER_TAG=v${NUMERO_DESPLIEGUE:-1}
+export DOCKER_TAG=$(cat ./BASH_ENV)
 
 export DOCKER_NETWORK=docker_red
 
