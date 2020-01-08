@@ -26,8 +26,6 @@ executors:
     machine:
       enabled: true
     working_directory: ~/proyect
-    environment:
-      TAG_DESPLIEGUE: $CIRCLE_SHA1
 
 ##################################################################
 # JOBS
