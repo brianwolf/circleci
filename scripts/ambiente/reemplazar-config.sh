@@ -2,15 +2,15 @@ source ./scripts/ambiente/ambiente.sh
 
 
 # SE BORRA LA CARPETA EN CASO DE QUE YA EXISTA
-rm -fr $GIT_CARPETA_DESCARGA
+rm -fr $AMBIENTE_GIT_CARPETA_DESCARGA
 
 
 # SE CLONA EL REPO
-git clone https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git \
--b ${CIRCLE_BRANCH:-master} \
-$GIT_CARPETA_DESCARGA
+git clone https://$AMBIENTE_GIT_USER:$AMBIENTE_GIT_TOKEN@github.com/$AMBIENTE_GIT_USER/$AMBIENTE_GIT_REPO.git \
+-b $AMBIENTE_GIT_RAMA \
+$AMBIENTE_GIT_CARPETA_DESCARGA
 
 
 # SE REEMPLAZAN LOS ARCHIVOS DE CONFIGURACION
-cp -fa $GIT_CARPETA_DESCARGA/ambiente.env ./config
-cp -fa $GIT_CARPETA_DESCARGA/argumentos.env ./config
+cp -fa $AMBIENTE_GIT_CARPETA_DESCARGA/ambiente.env ./config
+cp -fa $AMBIENTE_GIT_CARPETA_DESCARGA/argumentos.env ./config
