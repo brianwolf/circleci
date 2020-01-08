@@ -1,3 +1,3 @@
 export HEROKU_EMAIL=brian.d.lobo@gmail.com
-export HEROKU_API_KEY=e8306a62-634f-4621-b777-ab805d88cb15
-export HEROKU_APP=json-reportes-heroku
+export HEROKU_API_KEY=dd139446-3fc4-4a9a-8fce-cf7a1111da37
+export HEROKU_APP=circleci-heroku
