@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-ARG TAG=v1
+ARG TAG=latest
 
 # CONFIGURACION
 WORKDIR /usr/src/

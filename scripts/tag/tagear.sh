@@ -11,10 +11,11 @@ VERSION_FINAL="v$((ULTIMA_VERSION_INT + 1))"
 
 echo "Version a desplegar: $VERSION_FINAL"
 
+
 # SUBIR TAG
-# git tag $VERSION_FINAL
-# git push https://$GIT_USER:$GIT_TOKEN@github.com/$GIT_USER/$GIT_REPO.git --tags
+git tag $VERSION_FINAL
+git push http://$TAGEAR_GIT_USER:$TAGEAR_GIT_TOKEN@github.com/$TAGEAR_GIT_USER/$TAGEAR_GIT_REPO.git --tags
 
 
 # GUARDO CONFIGURACION PARA LOS DEMAS JOBS
-echo $VERSION_FINAL >> ./BASH_ENV 
+echo $VERSION_FINAL >> ./TAG
