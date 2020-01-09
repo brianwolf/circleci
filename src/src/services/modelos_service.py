@@ -1,9 +1,9 @@
 from uuid import UUID
 
-import app.configs.variables as var
-from app.configs.loggers import get_logger
-from app.models.errores import AppException
-from app.models.modelos import Modelo
+import src.configs.variables as var
+from src.configs.loggers import get_logger
+from src.models.errores import AppException
+from src.models.modelos import Modelo
 
 
 def guardar(modelo: Modelo) -> UUID:

@@ -1,5 +1,5 @@
-from app.configs.loggers import get_logger
-from app.models.errores import AppException
+from src.configs.loggers import get_logger
+from src.models.errores import AppException
 from flask import Blueprint, jsonify, request
 
 error_handler_bp = Blueprint('handlers', __name__)
