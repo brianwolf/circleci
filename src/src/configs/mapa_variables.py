@@ -1,5 +1,5 @@
 mapa_variables = {
-    'VERSION': 'v1',
+    'VERSION': 'python',
     'PYTHON_HOST': 'localhost',
     'PYTHON_PORT': 5000,
 

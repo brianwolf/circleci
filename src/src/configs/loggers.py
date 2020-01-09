@@ -1,4 +1,4 @@
-import app.configs.variables as var
+import src.configs.variables as var
 
 import logging
 import os
@@ -7,15 +7,15 @@ DIRECTORIO_LOGS = var.get('DIRECTORIO_LOGS')
 NOMBRE_LOG_PREDEFINIDO = var.get('NOMBRE_LOG_PREDEFINIDO')
 NIVEL_LOGS = var.get('NIVEL_LOGS')
 
-loggers = {}
+_loggers = {}
 
 
 def get_logger(nombre=NOMBRE_LOG_PREDEFINIDO) -> logging.Logger:
     '''
     Devuelve un objeto logger por un nombre, en caso de que no exista lo crea
     '''
-    if nombre in loggers.keys():
-        return loggers[nombre]
+    if nombre in _loggers.keys():
+        return _loggers[nombre]
 
     if not os.path.exists(DIRECTORIO_LOGS):
         os.makedirs(DIRECTORIO_LOGS, exist_ok=True)
@@ -36,6 +36,6 @@ def get_logger(nombre=NOMBRE_LOG_PREDEFINIDO) -> logging.Logger:
     logger.addHandler(sh)
     logger.addHandler(fh)
 
-    loggers[nombre] = logger
+    _loggers[nombre] = logger
 
     return logger
