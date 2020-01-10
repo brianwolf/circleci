@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from starlette.responses import Response
 from starlette.status import *
+from apps.models.modelos import Modelo
 
 router = APIRouter()
 _prefix = '/modelos'
@@ -14,3 +15,7 @@ def probando(nombre, response: Response):
         return {'BOOOM...!!!!': 'te lo dije'}
 
     return {'no pongas': 'boom'}
+
+@router.post("/test")
+def create_item(modelo: Modelo):
+    return modelo

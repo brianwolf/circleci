@@ -1,16 +1,33 @@
 import base64
 from datetime import datetime
 from uuid import UUID, uuid4
+from pydantic import BaseModel, validator, BaseConfig
+from pydantic.validators import dict_validator
+
 
 import apps.configs.variables as var
 
 
-class Modelo(object):
+class AppModel(BaseModel):
+
+    @classmethod
+    def get_validators(cls):
+        yield cls.validate
+
+    @classmethod
+    def validate(cls, value):
+        if isinstance(value, cls):
+            return value
+        else:
+            return cls(**dict_validator(value))
+
+
+class Modelo(AppModel):
     def __init__(self,
-                 nombre,
+                 nombre: str,
                  archivos: list = [],
                  id: UUID = uuid4(),
-                 fecha_creacion=datetime.now()):
+                 fecha_creacion: datetime = datetime.now()):
         self.nombre = nombre
         self.archivos = archivos
         self.id = id
