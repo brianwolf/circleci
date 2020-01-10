@@ -2,7 +2,7 @@ source ./scripts/docker/ambiente.sh
 
 docker network create $DOCKER_NETWORK
 
-docker run -d --rm \
+docker run -it --rm \
 --network $DOCKER_NETWORK \
 --env-file $DOCKER_ARCHIVO_AMBIENTE \
 --name $DOCKER_NOMBRE_IMAGEN \

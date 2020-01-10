@@ -1,5 +1,5 @@
 import os
-from src.configs.mapa_variables import mapa_variables
+from apps.configs.mapa_variables import mapa_variables
 
 
 def get(variable: str) -> str:

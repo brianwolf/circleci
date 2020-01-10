@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.7
 
 ARG TAG=latest
 
@@ -25,9 +25,15 @@ ENV PYTHON_NOMBRE_FUNCION_APP=app
 # EJECUCION
 EXPOSE ${PYTHON_PORT}
 
-CMD gunicorn \
-    -b ${PYTHON_HOST}:${PYTHON_PORT} \
+# CMD gunicorn \
+#     -b ${PYTHON_HOST}:${PYTHON_PORT} \
+#     --reload \
+#     --workers=${PYTHON_GUNICORN_WORKERS} \
+#     --worker-connections=${PYTHON_GUNICORN_CONNECTIONS} \
+#     ${PYTHON_NOMBRE_APP}:${PYTHON_NOMBRE_FUNCION_APP}
+
+CMD uvicorn \
+    --host ${PYTHON_HOST} \
+    --port ${PYTHON_PORT} \
     --reload \
-    --workers=${PYTHON_GUNICORN_WORKERS} \
-    --worker-connections=${PYTHON_GUNICORN_CONNECTIONS} \
     ${PYTHON_NOMBRE_APP}:${PYTHON_NOMBRE_FUNCION_APP}

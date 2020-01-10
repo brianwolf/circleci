@@ -2,7 +2,7 @@ import base64
 from datetime import datetime
 from uuid import UUID, uuid4
 
-import src.configs.variables as var
+import apps.configs.variables as var
 
 
 class Modelo(object):

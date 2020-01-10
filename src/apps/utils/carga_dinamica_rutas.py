@@ -2,7 +2,7 @@ import imp
 import os
 import re
 
-from flask import Flask
+from fastapi import FastAPI
 
 
 def _nombre_archivo(ruta: str, extension=''):
@@ -43,7 +43,7 @@ def _cargar_rutas_de_archivos(ruta_base: str):
     return rutas_archivos
 
 
-def registrar_blue_prints(app: Flask, directorio_rutas: str):
+def registrar_ruta(app: FastAPI, directorio_rutas: str):
     '''
     Registra todos los archivos .py del directorio como rutas para Flask,
     para esto los modulos deben tener estos 2 atributos:
@@ -58,4 +58,4 @@ def registrar_blue_prints(app: Flask, directorio_rutas: str):
         nombre_archivo = _nombre_archivo(ruta_archivo, '.py')
         modulo = imp.load_source(nombre_archivo, ruta_archivo)
 
-        app.register_blueprint(modulo.blue_print)
+        app.include_router(modulo.router, prefix=modulo._prefix)

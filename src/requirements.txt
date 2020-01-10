@@ -2,3 +2,5 @@ flask
 gunicorn
 pyinstaller
 pep8
+fastapi
+uvicorn
