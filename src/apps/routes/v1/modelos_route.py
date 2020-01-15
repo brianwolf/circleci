@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify, request
 
-import src.configs.variables as var
-import src.services.modelos_service as modelos
-from src.configs.loggers import get_logger
-from src.models.errores import AppException
-from src.models.modelos import Modelo
+import apps.configs.variables as var
+import apps.services.modelos_service as modelos
+from apps.configs.loggers import get_logger
+from apps.models.errores import AppException
+from apps.models.modelos import Modelo
 
 blue_print = Blueprint('modelos', __name__, url_prefix='/api/v1/modelos')
 
