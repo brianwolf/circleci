@@ -1,6 +1,6 @@
 source ./scripts/docker/ambiente.sh
 
-echo $CIRCLE_SHA1_SHORT
+echo $DOCKER_TAG
 
 docker build \
 --build-arg TAG=$DOCKER_TAG \

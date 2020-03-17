@@ -1,6 +1,5 @@
 version: 2.1
 
-
 ##################################################################
 # WORFLOWS
 ##################################################################
@@ -26,8 +25,6 @@ executors:
   ejecutor-base:
     machine:
       enabled: true
-    environment:
-      CIRCLE_SHA1_SHORT: $(echo $${CIRCLE_SHA1:0:7})
     working_directory: ~/proyect
 
 ##################################################################
