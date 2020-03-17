@@ -1,5 +1,7 @@
 source ./scripts/docker/ambiente.sh
 
+echo $CIRCLE_SHA1_SHORT
+
 docker build \
 --build-arg TAG=$DOCKER_TAG \
 $(for i in `cat $DOCKER_ARCHIVO_ARGUMENTOS`; do out+="--build-arg $i " ; done; echo $out;out="") \
