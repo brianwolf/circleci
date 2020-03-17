@@ -26,8 +26,8 @@ executors:
   ejecutor-base:
     machine:
       enabled: true
-        environment:
-          CIRCLE_SHA1_SHORT: $(echo $CIRCLE_SHA1 | cut -c -7)
+    environment:
+      CIRCLE_SHA1_SHORT: $(echo $CIRCLE_SHA1 | cut -c -7)
     working_directory: ~/proyect
 
 ##################################################################
