@@ -16,7 +16,7 @@ export DOCKER_ARCHIVO_AMBIENTE=./config/ambiente.env
 
 export DOCKER_DOCKERFILE=dockerfile
 
-export CIRCLE_SHA1_SHORT=${CIRCLE_SHA1:0:1}
+export CIRCLE_SHA1_SHORT=${CIRCLE_SHA1:0:7}
 
 export DOCKER_NOMBRE_IMAGEN=circleci
 export DOCKER_TAG=${CIRCLE_SHA1_SHORT:-latest}
