@@ -1,13 +1,8 @@
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 
-ARG TAG=v1
+ARG TAG=local
 
 WORKDIR /usr/src/
-
-
-# DEPENDENCIAS
-COPY ./src/requirements.txt .
-RUN pip install -r requirements.txt --upgrade pip
 
 
 # VARIABLES PREDEFINIDAS
@@ -22,14 +17,19 @@ ENV PYTHON_NOMBRE_FUNCION_APP=app
 
 
 # EJECUCION
-EXPOSE ${PYTHON_PORT}
-
 CMD gunicorn \
     -b ${PYTHON_HOST}:${PYTHON_PORT} \
     --reload \
     --workers=${PYTHON_GUNICORN_WORKERS} \
     --worker-connections=${PYTHON_GUNICORN_CONNECTIONS} \
     ${PYTHON_NOMBRE_APP}:${PYTHON_NOMBRE_FUNCION_APP}
+
+EXPOSE ${PYTHON_PORT}
+
+
+# DEPENDENCIAS
+COPY ./src/requirements.txt .
+RUN pip install -r requirements.txt --upgrade pip
 
 
 # CODIGO FUENTE
