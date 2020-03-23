@@ -1,4 +1,4 @@
-# Instalacion con Docker
+# :whale: Instalacion con Docker :whale: 
 
 ![alt text](../img/docker.svg)
 

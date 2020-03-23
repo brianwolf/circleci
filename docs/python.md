@@ -1,4 +1,4 @@
-# Instalacion con Python 3.8
+# :stars: Instalacion con Python 3.8 :stars: 
 
 > Para esto **se toma como directorio raiz** la carpeta `src/` por lo que todos los
 comandos mostrados se ejecutan dentro de esta carpeta
