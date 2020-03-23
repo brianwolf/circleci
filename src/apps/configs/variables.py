@@ -1,11 +1,24 @@
-import os
-from apps.configs.mapa_variables import mapa_variables
+from enum import Enum
 
 
-def get(variable: str) -> str:
-    '''
-    Obtiene el valor de la variable de entorno correspondiente, en caso de no obtenerla, 
-    la saca del archivo de configuracion
-    '''
-    valor_de_diccionario = mapa_variables[variable]
-    return os.environ.get(variable, valor_de_diccionario)
+class Variable(Enum):
+    VERSION = 'VERSION'
+    PYTHON_HOST = 'PYTHON_HOST'
+    PYTHON_PORT = 'PYTHON_PORT'
+    NIVEL_LOGS = 'NIVEL_LOGS'
+    DIRECTORIO_LOGS = 'DIRECTORIO_LOGS'
+    NOMBRE_LOG_PREDEFINIDO = 'NOMBRE_LOG_PREDEFINIDO'
+    NO_MOSTRAR_EJEMPLO = 'NO_MOSTRAR_EJEMPLO'
+
+
+_predefinidas = {
+    'VERSION': 'local',
+    'PYTHON_HOST': 'localhost',
+    'PYTHON_PORT': 5000,
+    'NIVEL_LOGS': 'INFO',
+    'DIRECTORIO_LOGS': 'resources/logs/',
+    'NOMBRE_LOG_PREDEFINIDO': 'app',
+    'NO_MOSTRAR_EJEMPLO': 'soy_un_secreto'
+}
+
+_no_mostrar = ['NO_MOSTRAR_EJEMPLO']
