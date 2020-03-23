@@ -1,9 +1,5 @@
-# DOCKER
-*.log*
-
 # APP
-logs/
-archivos/
+/resources/logs/
 
 
 # IDES
