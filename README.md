@@ -1,10 +1,10 @@
 # CircleCI-Python-Template
 
-> Ejemplo de arquitectura de un proyecto usando **python3.8**, **circleci** y **docker**
+> Ejemplo de proyecto python con despliegue automatizado usando Circleci con Docker
 
 ![alt text](img/python.png)
+![alt text](img/docker.png)
 ![alt text](img/circleci.png)
-![alt text](img/docker.svg)
 ![alt text](img/heroku.png)
 
 ---
@@ -57,7 +57,7 @@ Este despliegue consiste en:
 
 * Ingresar a la url https://circleci-template-heroku.herokuapp.com/ para probar la aplicacion.
 * Al ingresar a la url https://circleci-template-heroku.herokuapp.com/variables se puede observar la *version* desplegada
-en el atributo del json respuesta `version`
+  en el atributo del json respuesta `version`
 
 ## :earth_americas: Paginas
 
