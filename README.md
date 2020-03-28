@@ -1,11 +1,11 @@
 # CircleCI-Python-Template
 
-> Ejemplo de proyecto python con despliegue automatizado usando Circleci con Docker
+> Ejemplo de proyecto Python3.8 con despliegue automatizado usando Circleci con Docker
 
-![alt text](img/python.png)
-![alt text](img/docker.png)
-![alt text](img/circleci.png)
-![alt text](img/heroku.png)
+![alt text](docs/img/python.png)
+![alt text](docs/img/docker.png)
+![alt text](docs/img/circleci.png)
+![alt text](docs/img/heroku.png)
 
 ---
 
