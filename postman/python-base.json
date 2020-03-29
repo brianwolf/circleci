@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "3facf343-a4af-4b3e-ba09-499f6b058b8c",
+		"name": "python-base",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ejemplos",
+			"item": [
+				{
+					"name": "buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/ejemplos/7c90614d-f5c3-454f-8c55-bbec1762f2a2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ejemplos",
+								"7c90614d-f5c3-454f-8c55-bbec1762f2a2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/ejemplos/todos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ejemplos",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha\": \"2020-03-23T13:55:36.728464\",\n    \"numero\": 12,\n    \"texto\": \"hola mundo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/ejemplos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ejemplos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": 123,\n    \"texto\": \"estoy modificado\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/ejemplos/7c90614d-f5c3-454f-8c55-bbec1762f2a2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ejemplos",
+								"7c90614d-f5c3-454f-8c55-bbec1762f2a2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/ejemplos/01ccc8ad-7e71-4287-a6b1-b2120181dc5d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ejemplos",
+								"01ccc8ad-7e71-4287-a6b1-b2120181dc5d"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "base",
+			"item": [
+				{
+					"name": "vivo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vivo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vivo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/variables",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"variables"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f29d84ee-6926-47e3-b5db-96597a7f887a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4a6f367a-494e-4fc2-8190-cda192cbe250",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "baaf818e-db97-4737-85cd-6c3e943cf189",
+			"key": "url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

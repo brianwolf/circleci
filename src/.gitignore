@@ -1,8 +1,13 @@
+# APP
+/resources/logs/
+
+
 # IDES
-.vscode
+.vscode/
 
 
 # PYTHON
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
