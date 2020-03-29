@@ -9,16 +9,10 @@
 
 ---
 
-## :open_book: Indice
+## :open_book: Documentacion adicional
 
 * [Instalacion con Docker](docs/docker.md)
 * [Instalacion con Python](docs/python.md)
-* [Uso](#uso)
-* [Scripts](#scripts)
-* [Despliegue Automatizado](#despliegue)
-* [Heroku](#heroku)
-* [Paginas](#paginas)
-* [Autor](#autor)
 
 ---
 

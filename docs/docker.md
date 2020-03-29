@@ -1,6 +1,6 @@
-# :whale: Instalacion con Docker :whale:
+# :whale: Instalacion con Docker
 
-![alt text](../img/docker.svg)
+![alt text](img/docker.png)
 
 ## Construcción de la imagen local
 
@@ -28,5 +28,3 @@ Para parar la imagen correr el script:
 ---
 
 [Volver al readme principal](../README.md)
-
-

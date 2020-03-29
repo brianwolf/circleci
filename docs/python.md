@@ -3,15 +3,16 @@
 > Para esto **se toma como directorio raiz** la carpeta `src/` por lo que todos los
 comandos mostrados se ejecutan dentro de esta carpeta
 
-![alt text](../img/python.png)
+![alt text](img/python.png)
 
 ## Ambiente virtual
 
-* Con *virtualenv* instalado ejecutar: `virtualenv -p python3.8 env`
-* Entrar en la virtual env con `source env/bin/activate`
-* Instalar los requerimientos con `pip install -r requirements.txt`
+Existen scripts hechos para la creacion del ambiente virtual
+
+* Ejecutar `./scripts/python/env.sh`
 
 Para salir de la virtual env ejecutar `deactivate`
+En caso de querer actualizar el archivo **requirements.txt** se puede ejecutar `./scripts/python/update-requirements.sh`
 
 ## Correr con Flask
 
