@@ -1,4 +1,4 @@
-source ./scripts/docker/ambiente.sh
+. ./scripts/docker/ambiente.env
 
 echo "$DOCKER_TOKEN" | docker login $DOCKER_REGISTRY --username $DOCKER_USER --password-stdin
 
