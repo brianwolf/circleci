@@ -1,4 +1,4 @@
-# :card_index_dividers:	CircleCI-Python-Template
+# :card_index_dividers: CircleCI-Python-Template
 
 > Ejemplo de proyecto Python3.8 con despliegue automatizado usando Circleci con Docker
 
@@ -49,8 +49,8 @@ Este despliegue consiste en:
 
 ## :money_with_wings: Heroku
 
-* Ingresar a la url https://circleci-template-heroku.herokuapp.com/ para probar la aplicacion.
-* Al ingresar a la url https://circleci-template-heroku.herokuapp.com/variables se puede observar la *version* desplegada
+* Ingresar [aqui](https://json-reportes-back-heroku.herokuapp.com/) para probar la aplicacion.
+* Al agregarle `/variables` al final de la URL se puede observar la *version* desplegada
   en el atributo del json respuesta `version`
 
 ## :earth_americas: Paginas
