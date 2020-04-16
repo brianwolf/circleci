@@ -38,9 +38,9 @@ RUN rm requirements.txt
 # COMPILACION
 COPY ./src/apps ./src/apps
 COPY ./src/app.py ./src
-COPY ./src/resources ./src/resources
 
 RUN python -m compile -b -f -o ./dist ./src
 RUN mv -f ./dist/src/* .
 
+COPY ./src/resources ./resources
 RUN rm -fr ./src ./dist

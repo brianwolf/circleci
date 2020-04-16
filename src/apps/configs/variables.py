@@ -7,6 +7,7 @@ class Variable(Enum):
     PYTHON_PORT = 'PYTHON_PORT'
     NIVEL_LOGS = 'NIVEL_LOGS'
     DIRECTORIO_LOGS = 'DIRECTORIO_LOGS'
+    DIRECTORIO_RESOURCES = 'DIRECTORIO_RESOURCES'
     NOMBRE_LOG_PREDEFINIDO = 'NOMBRE_LOG_PREDEFINIDO'
     NO_MOSTRAR_EJEMPLO = 'NO_MOSTRAR_EJEMPLO'
 
@@ -16,7 +17,8 @@ _predefinidas = {
     'PYTHON_HOST': 'localhost',
     'PYTHON_PORT': 5000,
     'NIVEL_LOGS': 'INFO',
-    'DIRECTORIO_LOGS': 'resources/logs/',
+    'DIRECTORIO_LOGS': 'logs/',
+    'DIRECTORIO_RESOURCES': 'resources/',
     'NOMBRE_LOG_PREDEFINIDO': 'app',
     'NO_MOSTRAR_EJEMPLO': 'soy_un_secreto'
 }
