@@ -46,11 +46,14 @@ def _cargar_rutas_de_archivos(ruta_base: str):
 
 def registrar_blue_prints(app: Flask, directorio_rutas: str):
     '''
-    Registra todos los archivos .py del directorio como rutas para Flask,
-    para esto los modulos deben tener estos 2 atributos:
+    Registra los archivos dentro de `directorio_rutas` recursivamente como Blueprints para Flask,
+    pera esto es necesario que se defina un atributo llamado `blue_print` en cada archivo python. \n
+    Ejemplo:
 
-    from flask import Blueprint\n
-    blue_print = Blueprint('tu_nombre_de_ruta', __name__, url_prefix='/ejemplos')\n
+    ```
+    from flask import Blueprint
+    blue_print = Blueprint('nombre_unico_de_ruta', __name__, url_prefix='/api/v1/ejemplos')
+    ```
     '''
     rutas = _cargar_rutas_de_archivos(directorio_rutas)
 
