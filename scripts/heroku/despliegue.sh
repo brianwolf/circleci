@@ -1,9 +1,8 @@
 source ./scripts/heroku/ambiente.sh
-source ./scripts/docker/ambiente.env
 
 cd ./scripts/heroku
 
-echo "$HEROKU_API_KEY" | docker login --username $DOCKER_USER --password-stdin registry.heroku.com
+echo "$HEROKU_API_KEY" | docker login --username $HEROKU_EMAIL --password-stdin registry.heroku.com
 
 heroku create $HEROKU_APP
 
