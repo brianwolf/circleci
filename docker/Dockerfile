@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.8
 
 ARG TAG=local
 
@@ -10,7 +10,7 @@ ENV VERSION=${TAG}
 
 ENV PYTHON_HOST=0.0.0.0
 ENV PYTHON_PORT=5000
-ENV PYTHON_GUNICORN_WORKERS=2
+ENV PYTHON_GUNICORN_WORKERS=1
 ENV PYTHON_GUNICORN_CONNECTIONS=1000
 ENV PYTHON_NOMBRE_APP=app
 ENV PYTHON_NOMBRE_FUNCION_APP=app
@@ -28,10 +28,19 @@ EXPOSE ${PYTHON_PORT}
 
 
 # DEPENDENCIAS
+RUN pip install compile --upgrade pip
+
 COPY ./src/requirements.txt .
-RUN pip install -r requirements.txt --upgrade pip
+RUN pip install -r requirements.txt
+RUN rm requirements.txt
 
 
-# CODIGO FUENTE
-COPY ./src/app.py .
-COPY ./src/apps ./apps
+# COMPILACION
+COPY ./src/apps ./src/apps
+COPY ./src/app.py ./src
+COPY ./src/resources ./src/resources
+
+RUN python -m compile -b -f -o ./dist ./src
+RUN mv -f ./dist/src/* .
+
+RUN rm -fr ./src ./dist
