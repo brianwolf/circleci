@@ -1,5 +1,5 @@
 source ./scripts/heroku/ambiente.sh
-source ./scripts/docker/ambiente.sh
+source ./scripts/docker/ambiente.env
 
 
 DOCKERFILE_HEROKU_FINAL=./scripts/heroku/Dockerfile
