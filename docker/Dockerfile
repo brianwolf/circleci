@@ -43,4 +43,6 @@ RUN python -m compile -b -f -o ./dist ./src
 RUN mv -f ./dist/src/* .
 
 COPY ./src/resources ./resources
+COPY ./src/config ./config
+
 RUN rm -fr ./src ./dist
