@@ -1,11 +1,11 @@
 from enum import Enum
+from uuid import UUID
 
 from flask import Blueprint, jsonify, request
 
 import apps.services.ejemplo_service as ejemplo_service
 from apps.models.ejemplo import Modelo
 from apps.models.errores import AppException
-from uuid import UUID
 
 blue_print = Blueprint('ejemplos', __name__, url_prefix='/api/v1/ejemplos')
 

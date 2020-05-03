@@ -12,15 +12,15 @@ class Variable(Enum):
     NO_MOSTRAR_EJEMPLO = 'NO_MOSTRAR_EJEMPLO'
 
 
-_predefinidas = {
-    'VERSION': 'local',
-    'PYTHON_HOST': 'localhost',
-    'PYTHON_PORT': 5000,
-    'NIVEL_LOGS': 'INFO',
-    'DIRECTORIO_LOGS': 'logs/',
-    'DIRECTORIO_RESOURCES': 'resources/',
-    'NOMBRE_LOG_PREDEFINIDO': 'app',
-    'NO_MOSTRAR_EJEMPLO': 'soy_un_secreto'
-}
+# _predefinidas = {
+#     'VERSION': 'local',
+#     'PYTHON_HOST': 'localhost',
+#     'PYTHON_PORT': 5000,
+#     'NIVEL_LOGS': 'INFO',
+#     'DIRECTORIO_LOGS': 'logs/',
+#     'DIRECTORIO_RESOURCES': 'resources/',
+#     'NOMBRE_LOG_PREDEFINIDO': 'app',
+#     'NO_MOSTRAR_EJEMPLO': 'soy_un_secreto'
+# }
 
 _no_mostrar = ['NO_MOSTRAR_EJEMPLO']

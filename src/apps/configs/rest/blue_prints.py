@@ -8,7 +8,7 @@ from os import listdir, path
 
 from flask import Flask
 
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 
 def _nombre_archivo(ruta: str):
@@ -44,7 +44,7 @@ def _cargar_rutas_de_archivos(ruta_base: str):
     return rutas_archivos
 
 
-def registrar_blue_prints(app: Flask, directorio_rutas: str):
+def carga_dinamica_de_bps(app: Flask, directorio_rutas: str):
     '''
     Registra los archivos dentro de `directorio_rutas` recursivamente como Blueprints para Flask,
     pera esto es necesario que se defina un atributo llamado `blue_print` en cada archivo python. \n
