@@ -2,9 +2,10 @@ import os
 
 from apps.configs.variables import Variable, _no_mostrar
 
-__version__ = '1.2.0'
+__version__ = '1.2.1'
 
-_RUTA_ARCHIVO_VARIABLES_PREDEFINIDAS = 'config/variables_predefinidas.env'
+_variables_predefinidas = {}
+_ruta_archivo_variables_predefinidas = 'config/variables_predefinidas.env'
 
 
 def dame(variable: Variable) -> str:
@@ -27,13 +28,13 @@ def variables_cargadas() -> dict:
     }
 
 
-def cargar_variables_predefinidas():
+def _cargar_variables_predefinidas():
     '''
     Carga el diccionario de variables predefinidas de un archivo .env
     '''
-    variables = {}
+    global _variables_predefinidas
 
-    with open(_RUTA_ARCHIVO_VARIABLES_PREDEFINIDAS, 'r') as archivo:
+    with open(_ruta_archivo_variables_predefinidas, 'r') as archivo:
         renglones_archivo = archivo.readlines()
 
     for renglon in renglones_archivo:
@@ -46,9 +47,7 @@ def cargar_variables_predefinidas():
         if '#' in valor:
             valor = valor[:valor.index('#')].strip()
 
-        variables[clave] = valor.replace('\n', '')
-
-    return variables
+        _variables_predefinidas[clave] = valor.replace('\n', '')
 
 
-_variables_predefinidas = cargar_variables_predefinidas()
+_cargar_variables_predefinidas()
