@@ -1,22 +1,24 @@
 # :stars: Instalacion con Python 3.8
 
-> Para esto **se toma como directorio raiz** la carpeta `src/` por lo que todos los
-comandos mostrados se ejecutan dentro de esta carpeta
+> Todos los scripts deben ser ejecutados en el directorio raíz del proyecto
 
 ![alt text](img/python.png)
 
-## Ambiente virtual
+## Requerimientos
 
-Existen scripts hechos para la creacion del ambiente virtual
+* virtualenv
+* python 3.8
 
-* Ejecutar `./scripts/python/env.sh`
+## Instalación de Ambiente virtual y ejecución
 
-Para salir de la virtual env ejecutar `deactivate`
-En caso de querer actualizar el archivo **requirements.txt** se puede ejecutar `./scripts/python/update-requirements.sh`
+* Creación del ambiente virtual `./scripts/python/env.sh`
+* Correr con Python y Flask `./scripts/python/iniciar.sh`
 
-## Correr con Flask
+## Otros Scripts
 
-Dentro del ambiente virtual creado ejecutar: `python app.py`
+* Actualizar *requirements.txt* `./scripts/python/freeze.sh`
+* Compilar a *.pyc* `./scripts/python/compilar.sh`
+
 
 ## Puertos
 
@@ -24,7 +26,8 @@ Dentro del ambiente virtual creado ejecutar: `python app.py`
 
 ## Carpetas generadas
 
-* **resources/logs**: Logs de la aplicacion, todos los archivos generados tienen extension *.log*
+* **src/logs**: Logs de la aplicacion, todos los archivos generados tienen extension *.log*
+* **src/env**: Contiene los archivos del ambiente virtual creado con *virtualenv*
 
 ---
 
