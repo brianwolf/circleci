@@ -47,11 +47,14 @@ jobs:
             export DOCKER_TAG=${CIRCLE_SHA1:0:7}
             echo "$DOCKER_TAG"
       - run:
-          name: docker build
+          name: buildear imagen
           command: . scripts/docker/build.sh
       - run:
-          name: docker push
+          name: pushear nueva version
           command: . scripts/docker/push.sh
+      - run:
+          name: pushear nueva latest
+          command: . scripts/docker/push-latest.sh
 
 
   despliegue_a_heroku:
