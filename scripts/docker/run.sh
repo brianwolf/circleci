@@ -1,3 +1,5 @@
+. ./scripts/docker/config.sh
+
 docker network create $DOCKER_NETWORK
 
 docker run -d --rm \

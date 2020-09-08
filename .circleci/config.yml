@@ -34,7 +34,6 @@ executors:
 ##################################################################
 jobs:
   
-  
   creacion_de_docker:
     executor: ejecutor-base
     steps:
@@ -42,18 +41,20 @@ jobs:
           at: ~/proyect
       - checkout
       - run:
-          name: cargar config
-          command: . scripts/docker/config.sh
-      - run:
-          name: crear docker tag
+          name: buildear imagen
           command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            . scripts/docker/build.sh
       - run:
-          name: docker build
-          command: . scripts/docker/build.sh
+          name: pushear nueva version
+          command: |
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            . scripts/docker/push.sh
       - run:
-          name: docker push
-          command: . scripts/docker/push.sh
+          name: pushear nueva latest
+          command: |
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            . scripts/docker/push-latest.sh
 
 
   despliegue_a_heroku:
@@ -64,21 +65,16 @@ jobs:
       - checkout
       - run:
           name: instalar heroku
-          command: . scripts/heroku-docker/instalar-heroku.sh
-      - run:
-          name: cargar config
-          command: . scripts/heroku-docker/config.sh
-      - run:
-          name: crear docker tag
-          command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+          command: . scripts/heroku-docker/install-heroku.sh
       - run:
           name: generar dockerfile
-          command: . scripts/heroku-docker/build-dockerfile.sh
+          command: |
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            scripts/heroku-docker/build-dockerfile.sh
       - run:
           name: agregar CMD con $PORT
           command: |
-            echo "CMD gunicorn -b 0.0.0.0:$PORT app:app" >> Dockerfile
+            echo "CMD gunicorn -b 0.0.0.0:\$PORT app:app" >> Dockerfile
       - run:
           name: despliegue
           command: . scripts/heroku-docker/deploy.sh
