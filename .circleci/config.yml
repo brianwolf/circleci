@@ -53,7 +53,9 @@ jobs:
             . scripts/docker/push.sh
       - run:
           name: pushear nueva latest
-          command: . scripts/docker/push-latest.sh
+          command: |
+            export DOCKER_TAG=${CIRCLE_SHA1:0:7} 
+            . scripts/docker/push-latest.sh
 
 
   despliegue_a_heroku:
