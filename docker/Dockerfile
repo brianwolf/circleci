@@ -1,8 +1,28 @@
-FROM python:3.8.3-slim
+# ---------------------------------------------
+# COMPILER
+# ---------------------------------------------
+FROM python:3.8.3-slim as compiler
+
+WORKDIR /lobezzzno
+COPY ./src/logic ./src/logic
+COPY ./src/app.py ./src
+
+RUN pip install compile --upgrade pip
+RUN python -m compile -b -f -o ./dist ./src
+
+
+# ---------------------------------------------
+# EXECUTION
+# ---------------------------------------------
+FROM python:3.8-alpine
 
 ARG ARG_VERSION=local
 
 WORKDIR /lobezzzno
+
+# RECURSOS
+COPY ./src/consume ./consume
+COPY --from=compiler /lobezzzno/dist/* .
 
 
 # VARIABLES PREDEFINIDAS
@@ -15,6 +35,8 @@ ENV PYTHON_GUNICORN_CONNECTIONS=1000
 
 
 # EJECUCION
+EXPOSE ${PYTHON_PORT}
+
 CMD gunicorn \
     -b ${PYTHON_HOST}:${PYTHON_PORT} \
     --reload \
@@ -22,26 +44,8 @@ CMD gunicorn \
     --worker-connections=${PYTHON_GUNICORN_CONNECTIONS} \
     app:app
 
-EXPOSE ${PYTHON_PORT}
-
 
 # DEPENDENCIAS
-RUN pip install compile --upgrade pip
-
-COPY ./src/requirements.txt .
-RUN pip install -r requirements.txt
+COPY ./src/requirements.txt . 
+RUN pip install -r requirements.txt --upgrade pip
 RUN rm requirements.txt
-
-
-# RECURSOS
-COPY ./src/consume ./consume
-
-
-# COMPILACION
-COPY ./src/logic ./src/logic
-COPY ./src/app.py ./src
-
-
-RUN python -m compile -b -f -o ./dist ./src
-RUN mv -f ./dist/src/* .
-RUN rm -fr ./src ./dist
