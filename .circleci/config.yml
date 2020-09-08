@@ -77,7 +77,7 @@ jobs:
       - run:
           name: agregar CMD con $PORT
           command: |
-            echo "CMD gunicorn -b 0.0.0.0:$PORT app:app" >> Dockerfile
+            echo "CMD gunicorn -b 0.0.0.0:\$PORT app:app" >> Dockerfile
       - run:
           name: despliegue
           command: . scripts/heroku-docker/deploy.sh
