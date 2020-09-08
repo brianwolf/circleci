@@ -37,7 +37,7 @@ jobs:
   creacion_de_docker:
     executor: ejecutor-base
     enviroment:
-      DOCKER_TAG: ${CIRCLE_SHA1:0:7}
+      - DOCKER_TAG: ${CIRCLE_SHA1:0:7}
     steps:
       - attach_workspace:
           at: ~/proyect
