@@ -70,13 +70,11 @@ jobs:
           name: generar dockerfile
           command: |
             DOCKER_TAG=${CIRCLE_SHA1:0:7}
-            scripts/heroku-docker/build-dockerfile.sh
+            . scripts/heroku-docker/build-dockerfile.sh
       - run:
           name: agregar CMD con $PORT
           command: |
             echo "CMD gunicorn -b 0.0.0.0:\$PORT app:app" >> Dockerfile
       - run:
           name: despliegue
-          command: |
-            DOCKER_TAG=${CIRCLE_SHA1:0:7}
-            . scripts/heroku-docker/deploy.sh
+          command: . scripts/heroku-docker/deploy.sh
