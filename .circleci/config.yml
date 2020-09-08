@@ -42,16 +42,10 @@ jobs:
           at: ~/proyect
       - checkout
       - run:
-          name: cargar config
-          command: . scripts/docker/config.sh
-      - run:
           name: crear docker tag
           command: |
             export DOCKER_TAG=${CIRCLE_SHA1:0:7}
-      - run:
-          name: asd
-          command: |
-            echo $DOCKER_NAMESPACE
+            echo "$DOCKER_TAG"
       - run:
           name: docker build
           command: . scripts/docker/build.sh
@@ -68,14 +62,12 @@ jobs:
       - checkout
       - run:
           name: instalar heroku
-          command: . scripts/heroku-docker/instalar-heroku.sh
-      - run:
-          name: cargar config
-          command: . scripts/heroku-docker/config.sh
+          command: . scripts/heroku-docker/install-heroku.sh
       - run:
           name: crear docker tag
           command: |
             export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            echo "$DOCKER_TAG"
       - run:
           name: generar dockerfile
           command: . scripts/heroku-docker/build-dockerfile.sh
