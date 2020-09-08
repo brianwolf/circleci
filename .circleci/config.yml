@@ -31,6 +31,8 @@ executors:
 # JOBS
 ##################################################################
 jobs:
+  
+  
   creacion_de_docker:
     executor: ejecutor-base
     steps:
@@ -38,11 +40,19 @@ jobs:
           at: ~/proyect
       - checkout
       - run:
-          name: build
-          command: ./scripts/docker/build.sh
+          name: cargar config
+          command: . scripts/docker/config.sh
       - run:
-          name: push
-          command: ./scripts/docker/push.sh
+          name: crear docker tag
+          command: |
+            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+      - run:
+          name: docker build
+          command: . scripts/docker/build.sh
+      - run:
+          name: docker push
+          command: . scripts/docker/push.sh
+
 
   despliegue_a_heroku:
     executor: ejecutor-base
@@ -52,10 +62,21 @@ jobs:
       - checkout
       - run:
           name: instalar heroku
-          command: ./scripts/heroku-docker/instalar-heroku.sh
+          command: . scripts/heroku-docker/instalar-heroku.sh
       - run:
-          name: generar-dockerfile
-          command: ./scripts/heroku-docker/generar-dockerfile.sh
+          name: cargar config
+          command: . scripts/heroku-docker/config.sh
+      - run:
+          name: crear docker tag
+          command: |
+            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+      - run:
+          name: generar dockerfile
+          command: . scripts/heroku-docker/build-dockerfile.sh
+      - run:
+          name: agregar CMD con $PORT
+          command: |
+            echo "CMD gunicorn -b 0.0.0.0:$PORT app:app" >> Dockerfile
       - run:
           name: despliegue
-          command: ./scripts/heroku-docker/despliegue.sh
+          command: . scripts/heroku-docker/deploy.sh

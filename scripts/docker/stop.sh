@@ -1,4 +1,2 @@
-. ./scripts/docker/ambiente.sh
-
-docker stop $DOCKER_NOMBRE_IMAGEN
+docker stop $DOCKER_IMAGE_NAME
 docker network rm $DOCKER_NETWORK
