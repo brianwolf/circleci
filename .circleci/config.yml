@@ -36,8 +36,6 @@ jobs:
   
   creacion_de_docker:
     executor: ejecutor-base
-    environment:
-      - DOCKER_TAG: ${CIRCLE_SHA1:0:7}
     steps:
       - attach_workspace:
           at: ~/proyect
@@ -45,15 +43,17 @@ jobs:
       - run:
           name: buildear imagen
           command: |
-            echo $DOCKER_TAG
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
             . scripts/docker/build.sh
       - run:
           name: pushear nueva version
           command: |
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
             . scripts/docker/push.sh
       - run:
           name: pushear nueva latest
           command: |
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
             . scripts/docker/push-latest.sh
 
 
@@ -69,7 +69,7 @@ jobs:
       - run:
           name: generar dockerfile
           command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
             scripts/heroku-docker/build-dockerfile.sh
       - run:
           name: agregar CMD con $PORT
