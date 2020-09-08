@@ -1,48 +1,51 @@
-FROM python:3.8.3-slim
+# ---------------------------------------------
+# COMPILER
+# ---------------------------------------------
+FROM python:3.8.3-slim as compiler
 
-ARG TAG=local
+WORKDIR /lobezzzno
+COPY ./src/logic ./src/logic
+COPY ./src/app.py ./src
 
-WORKDIR /usr/src/
+RUN pip install compile --upgrade pip
+RUN python -m compile -b -f -o ./dist ./src
+
+
+# ---------------------------------------------
+# EXECUTION
+# ---------------------------------------------
+FROM python:3.8-alpine
+
+ARG ARG_VERSION=local
+
+WORKDIR /lobezzzno
+
+# RECURSOS
+COPY ./src/consume ./consume
+COPY --from=compiler /lobezzzno/dist/* .
 
 
 # VARIABLES PREDEFINIDAS
-ENV VERSION=${TAG}
+ENV VERSION=${ARG_VERSION}
 
 ENV PYTHON_HOST=0.0.0.0
 ENV PYTHON_PORT=80
 ENV PYTHON_GUNICORN_WORKERS=1
 ENV PYTHON_GUNICORN_CONNECTIONS=1000
-ENV PYTHON_NOMBRE_APP=app
-ENV PYTHON_NOMBRE_FUNCION_APP=app
 
 
 # EJECUCION
+EXPOSE ${PYTHON_PORT}
+
 CMD gunicorn \
     -b ${PYTHON_HOST}:${PYTHON_PORT} \
     --reload \
     --workers=${PYTHON_GUNICORN_WORKERS} \
     --worker-connections=${PYTHON_GUNICORN_CONNECTIONS} \
-    ${PYTHON_NOMBRE_APP}:${PYTHON_NOMBRE_FUNCION_APP}
-
-EXPOSE ${PYTHON_PORT}
+    app:app
 
 
 # DEPENDENCIAS
-RUN pip install compile --upgrade pip
-
-COPY ./src/requirements.txt .
-RUN pip install -r requirements.txt
+COPY ./src/requirements.txt . 
+RUN pip install -r requirements.txt --upgrade pip
 RUN rm requirements.txt
-
-
-# COMPILACION
-COPY ./src/apps ./src/apps
-COPY ./src/app.py ./src
-
-RUN python -m compile -b -f -o ./dist ./src
-RUN mv -f ./dist/src/* .
-
-COPY ./src/resources ./resources
-COPY ./src/config ./config
-
-RUN rm -fr ./src ./dist
