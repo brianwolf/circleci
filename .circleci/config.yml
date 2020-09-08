@@ -49,6 +49,10 @@ jobs:
           command: |
             export DOCKER_TAG=${CIRCLE_SHA1:0:7}
       - run:
+          name: asd
+          command: |
+            echo $DOCKER_NAMESPACE
+      - run:
           name: docker build
           command: . scripts/docker/build.sh
       - run:
