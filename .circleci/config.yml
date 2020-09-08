@@ -45,7 +45,7 @@ jobs:
       - run:
           name: buildear imagen
           command: |
-              echo $DOCKER_TAG
+            echo $DOCKER_TAG
             . scripts/docker/build.sh
       - run:
           name: pushear nueva version
