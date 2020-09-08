@@ -43,10 +43,14 @@ jobs:
       - checkout
       - run:
           name: buildear imagen
-          command: . scripts/docker/build.sh
+          command: |
+            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            . scripts/docker/build.sh
       - run:
           name: pushear nueva version
-          command: . scripts/docker/push.sh
+          command: |
+            export DOCKER_TAG=${CIRCLE_SHA1:0:7} 
+            . scripts/docker/push.sh
       - run:
           name: pushear nueva latest
           command: . scripts/docker/push-latest.sh
@@ -63,7 +67,9 @@ jobs:
           command: . scripts/heroku-docker/install-heroku.sh
       - run:
           name: generar dockerfile
-          command: . scripts/heroku-docker/build-dockerfile.sh
+          command: |
+            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            scripts/heroku-docker/build-dockerfile.sh
       - run:
           name: agregar CMD con $PORT
           command: |
