@@ -31,6 +31,8 @@ executors:
 # JOBS
 ##################################################################
 jobs:
+  
+  
   creacion_de_docker:
     executor: ejecutor-base
     steps:
@@ -50,6 +52,7 @@ jobs:
       - run:
           name: docker push
           command: . scripts/docker/push.sh
+
 
   despliegue_a_heroku:
     executor: ejecutor-base
