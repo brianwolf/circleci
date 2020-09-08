@@ -42,11 +42,6 @@ jobs:
           at: ~/proyect
       - checkout
       - run:
-          name: crear docker tag
-          command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
-            echo "$DOCKER_TAG"
-      - run:
           name: buildear imagen
           command: . scripts/docker/build.sh
       - run:
@@ -66,11 +61,6 @@ jobs:
       - run:
           name: instalar heroku
           command: . scripts/heroku-docker/install-heroku.sh
-      - run:
-          name: crear docker tag
-          command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
-            echo "$DOCKER_TAG"
       - run:
           name: generar dockerfile
           command: . scripts/heroku-docker/build-dockerfile.sh
