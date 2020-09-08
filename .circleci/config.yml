@@ -34,9 +34,10 @@ executors:
 ##################################################################
 jobs:
   
-  
   creacion_de_docker:
     executor: ejecutor-base
+    enviroment:
+      DOCKER_TAG: ${CIRCLE_SHA1:0:7}
     steps:
       - attach_workspace:
           at: ~/proyect
@@ -44,17 +45,15 @@ jobs:
       - run:
           name: buildear imagen
           command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7}
+              echo $DOCKER_TAG
             . scripts/docker/build.sh
       - run:
           name: pushear nueva version
           command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7} 
             . scripts/docker/push.sh
       - run:
           name: pushear nueva latest
           command: |
-            export DOCKER_TAG=${CIRCLE_SHA1:0:7} 
             . scripts/docker/push-latest.sh
 
 
