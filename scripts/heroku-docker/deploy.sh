@@ -1,3 +1,5 @@
+. ./scripts/heroku-docker/config.sh
+
 echo "$HEROKU_API_KEY" | docker login --username $HEROKU_EMAIL --password-stdin $HEROKU_DOCKER_REGISTRY 
 
 heroku create $HEROKU_APP

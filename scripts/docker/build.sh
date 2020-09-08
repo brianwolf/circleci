@@ -1,3 +1,5 @@
+. ./scripts/docker/config.sh
+
 docker build \
 --build-arg TAG=$DOCKER_TAG \
 $(for i in `cat $DOCKER_ARG_FILE`; do out+="--build-arg $i " ; done; echo $out;out="") \
