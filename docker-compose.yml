@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+
+    docker_imagen:
+        image: brianwolf94/docker_imagen:local
+        container_name: docker_imagen
+        restart: on-failure:3
+        env_file:
+            - ./docker/config/ambiente.env
+        volumes: 
+            - docker_imagen:/usr/src/produces:rw
+        ports:
+            - 80:80
+        networks: 
+            - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    
+volumes:
+    docker_imagen:
+        name: docker_imagen
+        external: false
+              
