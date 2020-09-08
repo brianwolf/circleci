@@ -77,4 +77,6 @@ jobs:
             echo "CMD gunicorn -b 0.0.0.0:\$PORT app:app" >> Dockerfile
       - run:
           name: despliegue
-          command: . scripts/heroku-docker/deploy.sh
+          command: |
+            DOCKER_TAG=${CIRCLE_SHA1:0:7}
+            . scripts/heroku-docker/deploy.sh
